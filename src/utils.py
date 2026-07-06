@@ -86,6 +86,10 @@ def formatInp_llama_persuasion(d,use_persuade=False,use_adv=False,use_ss=False,m
             template="<|im_start|>user\n{}"
     elif model=='llamaguard':
         template="<|start_header_id|>user<|end_header_id|>\n{}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+    elif model=='gemma':
+        template = "<start_of_turn>user\n{}<end_of_turn>\n<start_of_turn>model\n"
+        if do_not_use_last_inst_tok:
+            template = "<start_of_turn>user\n{}"
     
     #if use_adv:
         #template='[INST] {}'+'[/INST]'+adv_fix
